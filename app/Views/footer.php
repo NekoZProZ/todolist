@@ -1,36 +1,57 @@
-
-
-
-        
-            <footer class="page-footer">
-                <div class="font-13">2018 © <b>AdminCAST</b> - All rights reserved.</div>
-                <a class="px-4" href="http://themeforest.net/item/adminca-responsive-bootstrap-4-3-angular-4-admin-dashboard-template/20912589" target="_blank">BUY PREMIUM</a>
-                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+<!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
             </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
-    
-    <!-- BEGIN PAGA BACKDROPS-->
-    <div class="sidenav-backdrop backdrop"></div>
-    <div class="preloader-backdrop">
-        <div class="page-preloader">Loading</div>
-    </div>
-    <!-- END PAGA BACKDROPS-->
-    <!-- CORE PLUGINS-->
-    <script src="<?= base_url('vendors/jquery/dist/jquery.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/popper.js/dist/umd/popper.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/bootstrap/dist/js/bootstrap.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/metisMenu/dist/metisMenu.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/jquery-slimscroll/jquery.slimscroll.min.js')?>" type="text/javascript"></script>
-    <!-- PAGE LEVEL PLUGINS-->
-    <script src="<?= base_url('vendors/chart.js/dist/Chart.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/jvectormap/jquery-jvectormap-2.0.3.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/jvectormap/jquery-jvectormap-world-mill-en.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/jvectormap/jquery-jvectormap-us-aea-en.js')?>" type="text/javascript"></script>
-    <!-- CORE SCRIPTS-->
-    <script src="<?= base_url('js/app.min.js')?>" type="text/javascript"></script>
-    <!-- PAGE LEVEL SCRIPTS-->
-    <script src="<?= base_url('js/scripts/dashboard_1_demo.js')?>" type="text/javascript"></script>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="<?= base_url('assets/libs/jquery/dist/jquery.min.js') ?>"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?= base_url('assets/libs/popper.js/dist/umd/popper.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/extra-libs/sparkline/sparkline.js') ?>"></script>
+    <!--Wave Effects -->
+    <script src="<?= base_url('dist/js/waves.js') ?>"></script>
+    <!--Menu sidebar -->
+    <script src="<?= base_url('dist/js/sidebarmenu.js') ?>"></script>
+    <!--Custom JavaScript -->
+    <script src="<?= base_url('dist/js/custom.min.js') ?>"></script>
+    <!--This page JavaScript -->
+    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <!-- Charts js Files -->
+    <script src="<?= base_url('assets/libs/flot/excanvas.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot/jquery.flot.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot/jquery.flot.pie.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot/jquery.flot.time.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot/jquery.flot.stack.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot/jquery.flot.crosshair.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') ?>"></script>
+    <script src="<?= base_url('dist/js/pages/chart/chart-page-init.js') ?>"></script>
+
+    <script src="<?= base_url('assets/extra-libs/multicheck/datatable-checkbox-init.js') ?>"></script>
+    <script src="<?= base_url('assets/extra-libs/multicheck/jquery.multicheck.js') ?>"></script>
+    <script src="<?= base_url('assets/extra-libs/DataTables/datatables.min.js') ?>"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
 </body>
 
 </html>

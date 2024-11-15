@@ -14,6 +14,13 @@ public function tampil($cahya){
 
 	}
 
+	public function whereshow($cahya, $where){
+		return $this->db->table($cahya)
+                        ->getwhere($where)
+                        ->getResult();
+
+	}
+
 	public function tampil_filter($cahya, $filter){
 		$columns = $this->db->getFieldNames($cahya);
 
@@ -43,6 +50,15 @@ public function tampil($cahya){
         //                ->getResult();
                         
 
+	}
+
+	public function jointhere($cahya, $tadle2, $tadle3, $table4, $on, $on2, $on3){
+		return $this->db->table($cahya)
+		                ->join($tadle2,$on,'left')
+		                ->join($tadle3,$on2,'left')
+						->join($table4,$on3,'left')
+                        ->get()
+                        ->getResult();
 	}
 
 	public function jointwo($cahya, $tadle2, $tadle3, $on, $on2){
@@ -144,6 +160,41 @@ public function tampil($cahya){
     // Move the new file to the destination
     $file->move($imagePath, $imageName);
 }
+
+	public function upload_logo($file){
+		$imageName = $file->getName();
+		$filename = 'logo.png';
+		$file->move(ROOTPATH.'public/logo',$filename);
+
+	}
+
+	public function delete_logo(){
+		$imageName = 'logo.png';
+		$imagePath = ROOTPATH . 'public/logo';
+		unlink($imagePath . '/' . $imageName);
+		// $imageName = 'logo.png';
+		// $file->unlink(ROOTPATH . 'public/img/logo', $imageName);
+		// $imageName = 'logo.jpg';
+		// $file->unlink(ROOTPATH . 'public/img/logo', $imageName);
+
+	}
+
+	public function upload_icon($file){
+		$imageName = $file->getName();
+		$filename = 'icon.png';
+		$file->move(ROOTPATH.'public/logo',$filename);
+
+	}
+
+	public function delete_icon(){
+		$imageName = 'icon.png';
+		$imagePath = ROOTPATH . 'public/logo';
+		unlink($imagePath . '/' . $imageName);
+		// unlink(ROOTPATH . 'public/img/logo', $imageName);
+		// $imageName = 'icon.jpg';
+		// $file->unlink(ROOTPATH . 'public/img/logo', $imageName);
+
+	}
 
 	public function getwherejoin($cahya, $tadle2, $on, $where){
 		return $this->db->table($cahya)

@@ -1,103 +1,71 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Register</title>
-    <!-- GLOBAL MAINLY STYLES-->
-    <link href="<?= base_url('vendors/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet" />
-    <link href="<?= base_url('vendors/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" />
-    <link href="<?= base_url('vendors/themify-icons/css/themify-icons.css')?>" rel="stylesheet" />
-    <!-- THEME STYLES-->
-    <link href="<?= base_url('css/main.css')?>" rel="stylesheet" />
-    <!-- PAGE LEVEL STYLES-->
-    <link href="<?= base_url('css/pages/auth-light.css')?>" rel="stylesheet" />
-</head>
-
-<body class="bg-silver-300">
-    <div class="content">
-        <div class="brand">
-            <a class="link" href="">AdminCAST</a>
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
-        <form id="register-form" action="<?= base_url('home/aksi_register') ?>" method="post">
-            <h2 class="login-title">Sign Up</h2>
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="first_name" placeholder="First Name">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="last_name" placeholder="Last Name">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="Email" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="password" type="password" name="password" placeholder="Password">
-            </div>
+        <!-- Spinner End -->
 
-            
-            <div class="form-group">
-                <button class="btn btn-info btn-block" type="submit">Sign up</button>
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="index.html" class="">
+                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                            </a>
+                            <h3>Sign Up</h3>
+                        </div>
+                        <form action="<?= base_url('home/aksi_register') ?>" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe">
+                            <label for="floatingText">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Alamat</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Nama Lengkap</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <select class="form-select mb-3" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                        </form>
+                        <p class="text-center mb-0">Already have an Account? <a href="<?= base_url('home/login') ?>">Login</a></p>
+                    </div>
+                </div>
             </div>
-            
-            <div class="text-center">Already a member?
-                <a class="color-blue" href="<?= base_url('home/login') ?>">Login here</a>
-            </div>
-        </form>
+        </div>
+        <!-- Sign Up End -->
     </div>
-    <!-- BEGIN PAGA BACKDROPS-->
-    <div class="sidenav-backdrop backdrop"></div>
-    <div class="preloader-backdrop">
-        <div class="page-preloader">Loading</div>
-    </div>
-    <!-- END PAGA BACKDROPS-->
-    <!-- CORE PLUGINS -->
-    <script src="<?= base_url('vendors/jquery/dist/jquery.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/popper.js/dist/umd/popper.min.js')?>" type="text/javascript"></script>
-    <script src="<?= base_url('vendors/bootstrap/dist/js/bootstrap.min.js')?>" type="text/javascript"></script>
-    <!-- PAGE LEVEL PLUGINS -->
-    <script src="<?= base_url('vendors/jquery-validation/dist/jquery.validate.min.js')?>" type="text/javascript"></script>
-    <!-- CORE SCRIPTS-->
-    <script src="<?= base_url('js/app.js')?>" type="text/javascript"></script>
-    <!-- PAGE LEVEL SCRIPTS-->
-    <script type="text/javascript">
-        $(function() {
-            $('#register-form').validate({
-                errorClass: "help-block",
-                rules: {
-                    first_name: {
-                        required: true,
-                        minlength: 2
-                    },
-                    last_name: {
-                        required: true,
-                        minlength: 2
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    password: {
-                        required: true,
-                        confirmed: true
-                    }
-                },
-                highlight: function(e) {
-                    $(e).closest(".form-group").addClass("has-error")
-                },
-                unhighlight: function(e) {
-                    $(e).closest(".form-group").removeClass("has-error")
-                },
-            });
-        });
-    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('lib/chart/chart.min.js')?>"></script>
+    <script src="<?= base_url('lib/easing/easing.min.js')?>"></script>
+    <script src="<?= base_url('lib/waypoints/waypoints.min.js')?>"></script>
+    <script src="<?= base_url('lib/owlcarousel/owl.carousel.min.js')?>"></script>
+    <script src="<?= base_url('lib/tempusdominus/js/moment.min.js')?>"></script>
+    <script src="<?= base_url('lib/tempusdominus/js/moment-timezone.min.js')?>"></script>
+    <script src="<?= base_url('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')?>"></script>
+
+    <!-- Template Javascript -->
+    <script src="<?= base_url('js/main.js')?>"></script>
 </body>
 
 </html>

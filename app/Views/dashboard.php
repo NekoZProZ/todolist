@@ -1,36 +1,17 @@
-<div class="content-wrapper">
-            <!-- START PAGE CONTENT-->
-            <div class="page-content fade-in-up">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="ibox bg-success color-white widget-stat">
-                            <div class="ibox-body">
-                                <h2 class="m-b-5 font-strong">Selamat Datang</h2>
-                                <div class="m-b-5"><?=session()->get('nama')?></div></i>
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
-                    
+<div class="container-fluid pt-4 px-4">
+          <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+              <div
+                class="bg-secondary rounded d-flex align-items-center justify-content-between p-4"
+              >
+                <i class="fa fa-chart-line fa-3x text-primary"></i>
+                <div class="ms-3">
+                  <p class="mb-2">Selamat Datang</p>
+                  <!-- <h6 class="mb-0">$1234</h6> -->
                 </div>
-                
-                
-            
-                <style>
-                    .visitors-table tbody tr td:last-child {
-                        display: flex;
-                        align-items: center;
-                    }
-
-                    .visitors-table .progress {
-                        flex: 1;
-                    }
-
-                    .visitors-table .progress-parcent {
-                        text-align: right;
-                        margin-left: 10px;
-                    }
-                </style>
-                
+              </div>
             </div>
-            <!-- END PAGE CONTENT-->
+            
+            
+          </div>
+        </div>
