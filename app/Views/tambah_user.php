@@ -50,7 +50,7 @@
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="level">
                                             
                                                 <option value="1">Admin</option>
-                                                <option value="2">Petugas</option>
+                                                <option value="2">User</option>
                                             
                                         </select>
                                     

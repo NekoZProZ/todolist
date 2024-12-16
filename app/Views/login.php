@@ -19,6 +19,19 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style>
+    .captcha-box {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #eee;
+      padding: 10px;
+      display: inline-block;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+    
+    </style>
 </head>
 
 <body>
@@ -43,7 +56,8 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
-                        <h3 style="color: white;">Login User</h3>
+                        <h3 style="color: white;">Login User </h3>
+                        <!-- $capt->status  -->
                     </div>
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" id="loginform" action="<?= base_url('home/aksi_login') ?>" method="post">
@@ -62,15 +76,23 @@
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="" name="password">
                                 </div>
                                 <input type="hidden" name="tb" value="1">
+                                <?php if( $capt->status=='online'){?>
                                 <div class="g-recaptcha" data-sitekey="6LeshCAqAAAAAOGLdQWzAJg5gwudDshcUM0J5hcY" data-callback="onLoginFormCaptcha"></div>
       <br/>
+                                <?php } ?>
+                                <?php if( $capt->status=='offline'){?>
+                                    <div id="captcha" class="captcha-box"></div>
+                                    
+                                    <!-- <label for="captcha-input">Enter CAPTCHA:</label> -->
+                                    <input type="text" id="captcha-input" required>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="row border-top border-secondary">
                             <div class="col-12">
                                 <div class="form-group">
                                     <div class="p-t-20">
-                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i>Login For Admin/Petugas</button>
+                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i>Membuat Akun/Register</button>
                                         <button class="btn btn-success float-right" type="submit">Login</button>
                                     </div>
                                 </div>
@@ -80,11 +102,11 @@
                 </div>
                 <div id="recoverform">
                     <div class="text-center">
-                        <h3 style="color: white;">Login Admin/Petugas</h3>
+                        <h3 style="color: white;">Register</h3>
                     </div>
                     <div class="row m-t-20">
                         <!-- Form -->
-                        <form class="col-12" id="loginad" action="<?= base_url('home/aksi_login') ?>" method="post">
+                        <form class="col-12" id="loginad" action="<?= base_url('home/aksi_register') ?>" method="post">
                             <!-- email -->
                             <div class="col-12">
                                 <div class="input-group mb-3">
@@ -95,19 +117,33 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Nama" aria-label="Nama" aria-describedby="basic-addon1" required="" name="nama">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="" name="password">
                                 </div>
                                 <input type="hidden" name="tb" value="2">
+                                <?php if( $capt->status=='online'){?>
                                 <div class="g-recaptcha" data-sitekey="6LeshCAqAAAAAOGLdQWzAJg5gwudDshcUM0J5hcY" data-callback="onLoginAdCaptcha"></div>
       <br/>
+                                <?php } ?>
+                                <?php if( $capt->status=='offline'){?>
+                                    <div id="captcha" class="captcha-box"></div>
+                                    
+                                    <!-- <label for="captcha-input">Enter CAPTCHA:</label> -->
+                                    <input type="text" id="captcha-input" required>
+                                <?php } ?>
                             </div>
                             <!-- pwd -->
                             <div class="row m-t-20 p-t-20 border-top border-secondary">
                                 <div class="col-12">
                                     <a class="btn btn-success" href="#" id="to-login" name="action">Back To Login</a>
-                                    <button class="btn btn-info float-right" type="submit" name="action">Login</button>
+                                    <button class="btn btn-info float-right" type="submit" name="action">Create</button>
                                 </div>
                             </div>
                         </form>
@@ -159,6 +195,19 @@
     });
     </script>
 
+
+
+
+
+
+
+
+
+
+
+
+<?php if( $capt->status=='online'){?>
+
 <script>
         // Store reCAPTCHA responses for each form
     var loginFormCaptchaResponse = "";
@@ -189,6 +238,74 @@
         }
     });
     </script>
+
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if( $capt->status=='offline'){?>
+
+    <script>
+    // Function to generate random alphanumeric string
+    function generateCaptcha() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let captcha = '';
+      for (let i = 0; i < 6; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return captcha;
+    }
+
+    // Display the CAPTCHA when the page loads
+    const captchaText = generateCaptcha();
+    document.getElementById('captcha').innerText = captchaText;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Form submission event listener
+    //document.getElementById('loginad').addEventListener('submit', function(event) {
+    document.getElementById('loginform').addEventListener('submit', function (event) {
+    //   e.preventDefault();
+      const userInput = document.getElementById('captcha-input').value;
+    //   const message = document.getElementById('message');
+      
+      // Check if the input matches the CAPTCHA
+      if (userInput === captchaText) {
+        // message.style.color = 'green';
+        // message.innerText = 'CAPTCHA matched!';
+      } else {
+        // message.style.color = 'red';
+        // message.innerText = 'CAPTCHA did not match. Try again.';
+        alert("Please complete the reCAPTCHA for Login.");
+            event.preventDefault();
+      }
+    });
+  </script>
+
+<?php } ?>
+
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
     async defer>
 </script>

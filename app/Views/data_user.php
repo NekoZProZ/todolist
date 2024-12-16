@@ -53,14 +53,14 @@
 ?>
                                             <tr>
                                         <th scope="row"><?= $no++ ?></th>
-                                        <td><?= $nelson->nama_petugas ?></td>
+                                        <td><?= $nelson->nama_user ?></td>
                                         <td><?= $nelson->username ?></td>
                                         <td><?= $nelson->level ?></td>
                                         <td>
-                                          <a href="<?= base_url('home/edit_user/'.$nelson->id_petugas)?>">
+                                          <a href="<?= base_url('home/edit_user/'.$nelson->id_user)?>">
                                           <button type="button" class="btn btn-info m-2">Edit</button>
                                           </a>
-                                          <a href="<?= base_url('home/delete_user/'.$nelson->id_petugas)?>">
+                                          <a href="<?= base_url('home/delete_user/'.$nelson->id_user)?>">
                                           <button type="button" class="btn btn-danger m-2">Delete</button>
                                           </a>
                                         </td>

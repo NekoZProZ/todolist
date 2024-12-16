@@ -72,6 +72,18 @@ public function tampil($cahya){
                         
 
 	}
+	public function jointwowhererow($cahya, $tadle2, $tadle3, $on, $on2, $where){
+		return $this->db->table($cahya)
+		                ->join($tadle2,$on,'left')
+		                ->join($tadle3,$on2,'left')
+		                ->getwhere($where)
+                        ->getRow();
+                        
+		//return $this->db->query('select * from barangm join')
+        //                ->getResult();
+                        
+
+	}
 
 	public function jointwowhere($cahya, $tadle2, $tadle3, $on, $on2, $where){
 		return $this->db->table($cahya)
@@ -294,6 +306,13 @@ return $this->db->table($table)
 		return $this->db->query($query)
                         //->get()
                         ->getRow();
+
+	}
+
+	public function kirim_gambarm($file){
+		$imageName = $file->getName();
+		$filename = 'logo.png';
+		$file->move(ROOTPATH.'public/komisi',$imageName);
 
 	}
 

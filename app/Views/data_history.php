@@ -33,16 +33,19 @@
                             <div class="card-body">
                                 <h5 class="card-title">Data Barang</h5>
                                 <div class="table-responsive">
-                                
+                                <!-- <a href="<?= base_url('home/tambah_barang')?>">
+                                          <button type="button" class="btn btn-success m-2">Tambah</button>
+                                          </a> -->
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Tanggal</th>
-                                                <th>User</th>
-                                                <th>Harga</th>
-                                                
+                                                <th>Nama User</th>
+                                                <th>Waktu Absen</th>
+                                                <!-- <th>Harga Akhir</th>
+                                                <th>Nama Petugas</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -52,10 +55,23 @@
 ?>
                                             <tr>
                                         <th scope="row"><?= $no++ ?></th>
-                                        <td><?= $nelson->nama_barang ?></td>
-                                        <td><?= $nelson->tgl_lelang ?></td>
-                                        <td><?= $nelson->nama_lengkap ?></td>
-                                        <td><?= $nelson->penawaran_harga ?></td>
+                                        <td><?= $nelson->nama_user ?></td>
+                                        <td><?php if (is_null($nelson->waktu_absen)): ?>
+        <!-- Leave it empty if the data is null -->
+    <?php else: ?>
+        <?php
+        $time = new DateTime($nelson->waktu_absen); // Convert waktu_absen to DateTime object
+        $cutoffTime = new DateTime(date('Y-m-d') . ' 07:30:00'); // Set the cutoff time
+        ?>
+
+        <?php if ($time > $cutoffTime): ?>
+            <span style="color: red;">
+                <?= $nelson->waktu_absen ?> (terlambat)
+            </span>
+        <?php else: ?>
+            <?= $nelson->waktu_absen ?>
+        <?php endif; ?>
+    <?php endif; ?></td>
                                         
                                     </tr>
                                     <?php } ?>

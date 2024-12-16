@@ -26,13 +26,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?=base_url('home/aksi_edit_user/'.$clara->id_petugas)?>">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?=base_url('home/aksi_edit_user/'.$clara->id_user)?>">
                                 <div class="card-body">
                                     <h4 class="card-title">Edit</h4>
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nama</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" placeholder="First Name Here" name="nama" value="<?= $clara->nama_petugas ?>">
+                                            <input type="text" class="form-control" id="fname" placeholder="First Name Here" name="nama" value="<?= $clara->nama_user ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">

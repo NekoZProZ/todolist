@@ -1,7 +1,7 @@
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Edit</h4>
+                        <h4 class="page-title">Kirim</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -26,27 +26,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?=base_url('home/aksi_edit_barang/'.$clara->id_barang)?>">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?=base_url('home/aksi_kirim/'.$clara->id_pesan)?>">
                                 <div class="card-body">
-                                    <h4 class="card-title">Edit</h4>
+                                    <h4 class="card-title">Kirim</h4>
                                     <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nama</label>
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Gambar</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" placeholder="First Name Here" name="nama" value="<?= $clara->nama_barang ?>">
+                                            <input type="file" class="form-control" id="lname" placeholder="Last Name Here" name="gambar">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Harga</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="lname" placeholder="Last Name Here" name="harga" value="<?= $clara->harga_awal ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Deskripsi</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="lname" placeholder="Last Name Here" name="des" value="<?= $clara->deskripsi_barang ?>">
-                                        </div>
-                                    </div>
+                                    
                                     
                                     
                                 </div>

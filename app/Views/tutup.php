@@ -1,45 +1,53 @@
-<div class="content-wrapper">
-<!-- START PAGE CONTENT-->
-            <div class="page-heading">
-                <h1 class="page-title">Konsultasi</h1>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="index.html"><i class="la la-home font-20"></i></a>
-                    </li>
-                    
-                </ol>
-            </div>
-            <div class="page-content fade-in-up">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="ibox">
-                            <div class="ibox-head">
-                                <div class="ibox-title">Transaksi</div>
-                            </div>
-                            
-                            <div class="ibox-body">
-                                <form action="<?= base_url('home/aksi_tutup/'.$group) ?>" method="post">
-                                    <div class="form-group">
-                                        <div class="input-group-icon right">
-                                            <input class="form-control" type="number" name="biaya" placeholder="Biaya Konsultasi" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group-icon right">
-                                            <input class="form-control" type="text" name="keterangan" placeholder="Keterangan">
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-info" type="submit">Send</button>
-                                </form>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                </div>
-                
-                
-                
-            </div>
-            
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="you-qr-result"></div>
+    <h1>Scanner</h1>
+    <div style="display: flex; justify-content: center;">
+        <div id="my-qr-reader" style="width:500px;">
+
+        </div>
+    </div>
+
+    <!-- LOAD LIBRARY -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <script>
+        // CHECK IF DOM IS READY
+        function domReady(fn) {
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                setTimeout(fn,1)
+            }else{
+                document.addEventListener("DOMContentLoaded",fn)
+            }
+        }
+
+        domReady(function() {
+            var myqr = document.getElementById('you-qr-result')
+            var lastResult,countResults = 0;
+
+            // IF FOUND YOUR QR
+            function onScanSuccess(decodeText,decodeResult) {
+                if (decodeText !== lastResult) {
+                    ++countResults;
+                    lastResult = decodeText;
+
+                    // ALERT YOUR QR CODE
+                    alert("your qr is : " + decodeText,decodeResult)
+                    myqr.innerHTML = ` you scan ${countResults} : ${decodeText}`
+                }
+            }
+            // AND LAST RENDER YOUR CAMERA QR
+            var htmlscanner = new Html5QrcodeScanner(
+                "my-qr-reader",{fps:10,qrbox:250})
+
+                htmlscanner.render(onScanSuccess)
+        })
+    </script>
+</body>
+</html>
